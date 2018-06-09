@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <TextView android:id="@+id/txtRenameList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rename List"
+        android:padding="8dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView android:id="@+id/txtDeleteList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete List"
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtRenameList"/>
+
+
+    <TextView android:id="@+id/txtDeleteAllLists"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete All Lists"
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtDeleteList"/>
+
+
+</android.support.constraint.ConstraintLayout>
