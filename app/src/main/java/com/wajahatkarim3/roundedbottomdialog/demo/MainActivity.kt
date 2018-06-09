@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomDialog = RoundedBottomSheetDialogFragment()
+        val bottomDialog = NewTaskDialog()
         bottomDialog.show(supportFragmentManager, "dialog")
     }
 }
