@@ -2,6 +2,7 @@ package com.wajahatkarim3.roundedbottomdialog.demo
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
@@ -9,7 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomDialog = ListOptionsDialog()
+
+    }
+
+    fun openDialog(view: View)
+    {
+        val bottomDialog = FullScreenScrollableDialog()
         bottomDialog.show(supportFragmentManager, "dialog")
     }
 }
