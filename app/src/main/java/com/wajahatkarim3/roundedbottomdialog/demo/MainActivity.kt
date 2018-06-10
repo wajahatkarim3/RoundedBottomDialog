@@ -3,6 +3,9 @@ package com.wajahatkarim3.roundedbottomdialog.demo
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.LayoutInflater
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -15,7 +18,13 @@ class MainActivity : AppCompatActivity() {
 
     fun openDialog(view: View)
     {
-        val bottomDialog = FullScreenScrollableDialog()
-        bottomDialog.show(supportFragmentManager, "dialog")
+        //val bottomDialog = FullScreenScrollableDialog()
+        //bottomDialog.show(supportFragmentManager, "dialog")
+
+        val bottomDialog = SpringBackBottomSheetDialog(this)
+        val v = LayoutInflater.from(this).inflate(R.layout.scroll_list_options_dialog_layout, null, false)
+        bottomDialog.setContentView(v)
+        //bottomDialog.addSpringBackDisLimit(500)
+        bottomDialog.show()
     }
 }
