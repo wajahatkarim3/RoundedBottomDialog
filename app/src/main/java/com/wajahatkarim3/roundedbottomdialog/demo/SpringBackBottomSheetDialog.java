@@ -13,6 +13,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatDialog;
 import android.util.Log;
 import android.util.TypedValue;
@@ -41,6 +42,7 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
     private CoordinatorLayout coordinator;
     private FrameLayout bottomSheet;
     private Rect r = new Rect();
+    private NestedScrollView nestedScrollView;
 
     public SpringBackBottomSheetDialog(@NonNull Context context) {
         this(context, R.style.BottomSheetDialogTheme);
@@ -166,13 +168,16 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
             view = getLayoutInflater().inflate(layoutResId, coordinator, false);
         }
         bottomSheet = (FrameLayout) coordinator.findViewById(R.id.sub);
+        nestedScrollView = (NestedScrollView) coordinator.findViewById(R.id.nestedScrollView);
         mBehavior = BottomSheetBehavior.from(bottomSheet);
         mBehavior.setBottomSheetCallback(mBottomSheetCallback);
         mBehavior.setHideable(mCancelable);
         if (params == null) {
-            bottomSheet.addView(view);
+            //bottomSheet.addView(view);
+            nestedScrollView.addView(view);
         } else {
-            bottomSheet.addView(view, params);
+            //bottomSheet.addView(view, params);
+            nestedScrollView.addView(view, params);
         }
         // We treat the CoordinatorLayout as outside the dialog though it is technically inside
         coordinator.findViewById(R.id.touch_outside).setOnClickListener(new View.OnClickListener() {
