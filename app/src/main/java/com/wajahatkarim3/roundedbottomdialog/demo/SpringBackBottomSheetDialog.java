@@ -14,6 +14,7 @@ import android.support.v4.view.AccessibilityDelegateCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v7.app.AppCompatDialog;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,7 +26,7 @@ import android.widget.FrameLayout;
 /**
  * Created by lgh on 18-4-9.
  *
- * 添加了可控的回弹距离
+ * Added controllable rebound distance
  *
  */
 
@@ -118,8 +119,8 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
     }
 
     /**
-     * 添加 top 距离顶部多少的时候触发收缩效果
-     * @param targetLimitH int 高度限制
+     * How much the top is added to the top triggers the shrink effect
+     * @param targetLimitH int Height restrictions
      */
     @SuppressWarnings("all")
     public void addSpringBackDisLimit(final int targetLimitH){
@@ -128,13 +129,14 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
         final int totalHeight = getContext().getResources().getDisplayMetrics().heightPixels;
         final int currentH = (int) ((float)totalHeight*0.618);
         final int leftH    = totalHeight - currentH;
+        /*
         coordinator.setOnTouchListener(
                 new View.OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
                         switch (event.getAction()){
                             case MotionEvent.ACTION_MOVE:
-                                // 计算相对于屏幕的 坐标
+                                // Calculate the coordinates relative to the screen
                                 bottomSheet.getGlobalVisibleRect(r);
                                 break;
                             case MotionEvent.ACTION_UP:
@@ -152,6 +154,7 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
                     }
                 }
         );
+        */
     }
 
     private View wrapInBottomSheet(int layoutResId, View view, ViewGroup.LayoutParams params) {
@@ -180,6 +183,7 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
                 }
             }
         });
+        /*
         // Handle accessibility events
         ViewCompat.setAccessibilityDelegate(bottomSheet, new AccessibilityDelegateCompat() {
             @Override
@@ -203,6 +207,8 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
                 return super.performAccessibilityAction(host, action, args);
             }
         });
+        */
+        /*
         bottomSheet.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
@@ -210,6 +216,7 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
                 return true;
             }
         });
+        */
         return container;
     }
 
@@ -253,8 +260,27 @@ public class SpringBackBottomSheetDialog extends AppCompatDialog {
             }
         }
 
+        /**
+         *
+         * @param bottomSheet
+         * @param slideOffset float: The new offset of this bottom sheet within [-1,1] range.
+         *                    Offset increases as this bottom sheet is moving upward.
+         *                    From 0 to 1 the sheet is between collapsed and expanded states and
+         *                    from -1 to 0 it is between hidden and collapsed states.
+         */
         @Override
         public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+            if (slideOffset > 0)
+            {
+            //    mBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+            }
+            Log.w("SLIDE", slideOffset + "");
+
+            if (mBehavior.getState() == BottomSheetBehavior.STATE_EXPANDED && slideOffset < 1.0)
+            {
+                // Collapse first
+                //mBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+            }
         }
     };
 
