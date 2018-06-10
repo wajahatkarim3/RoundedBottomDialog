@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         //bottomDialog.show(supportFragmentManager, "dialog")
 
         val bottomDialog = SpringBackBottomSheetDialog(this)
-        val v = LayoutInflater.from(this).inflate(R.layout.scroll_list_options_dialog_layout, null, false)
+        val v = LayoutInflater.from(this).inflate(R.layout.new_task_dialog_layout, null, false)
         bottomDialog.setContentView(v)
         //bottomDialog.addSpringBackDisLimit(500)
         bottomDialog.show()
